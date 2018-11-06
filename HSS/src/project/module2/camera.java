@@ -1,4 +1,4 @@
-package project;
+package project.module2;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,14 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import module2.API.cameraAPI;
+
 @WebServlet("/camera")
 public class camera extends HttpServlet implements cameraAPI{
 	private static final long serialVersionUID = 1L;
 	private InputStream photoData = null;
 	
-    public camera() {
-        super();
-    }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter output = response.getWriter();
 		output.print(this.photoData);
@@ -49,7 +48,7 @@ public class camera extends HttpServlet implements cameraAPI{
         if (this.photoData == null) 
             return false;
         else
-            
+            return true;
     }
 
 }

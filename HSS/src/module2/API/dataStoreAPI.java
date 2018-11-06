@@ -1,4 +1,4 @@
-package project;
+package module2.API;
 
 public interface dataStoreAPI {
 
