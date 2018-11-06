@@ -1,54 +1,48 @@
 package project.module2;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
+import java.util.Date;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import project.module2.API.cameraAPI;
 
-import module2.API.cameraAPI;
+public class Camera implements cameraAPI {
+    
+    
 
-@WebServlet("/camera")
-public class camera extends HttpServlet implements cameraAPI{
-	private static final long serialVersionUID = 1L;
-	private InputStream photoData = null;
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter output = response.getWriter();
-		output.print(this.photoData);
-		
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-	
     @Override
     public void access(InputStream data) {
-        this.photoData = data;
+        // TODO Auto-generated method stub
+
     }
-    
-    @Override
-    public InputStream getData() {
-        return this.photoData;
-    }
-    
+
     @Override
     public void takePicture() {
-        // not yet
+        // TODO Auto-generated method stub
+
     }
-    
+
     @Override
-    public boolean hasData() {
+    public boolean sendData() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public InputStream getData() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void called(Date time) {
+        // TODO Auto-generated method stub
         
-        if (this.photoData == null) 
-            return false;
-        else
-            return true;
+    }
+
+    @Override
+    public Date getCalledDate() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
