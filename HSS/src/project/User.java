@@ -1,28 +1,52 @@
 package project;
 
 public class User {
-	private String user;
-	private int phoneNumber;
+	private String name;
+	private String phoneNumber;
 	private String email;
+	private boolean notifyByText;
+	private boolean notifyByEmail;
 	
-	public User(String user, int phone, String email) {
-		this.user = user;
+	public User() {}
+	
+	public User(String name) {
+		this.name = name;
+	}
+	
+	public boolean isNotifyByText() {
+		return notifyByText;
+	}
+
+	public void setNotifyByText(boolean notifyByText) {
+		this.notifyByText = notifyByText;
+	}
+
+	public boolean isNotifyByEmail() {
+		return notifyByEmail;
+	}
+
+	public void setNotifyByEmail(boolean notifyByEmail) {
+		this.notifyByEmail = notifyByEmail;
+	}
+
+	public User(String user, String phone, String email) {
+		this.name = user;
 		this.phoneNumber = phone;
 	}
 
-	public String getUser() {
-		return user;
+	public String getName() {
+		return name;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setName(String user) {
+		this.name = user;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
