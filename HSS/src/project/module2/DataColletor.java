@@ -1,11 +1,14 @@
 package project.module2;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 
 import project.module2.API.dataAPI;
 
 public class DataColletor implements dataAPI {
+    
+    ArrayList<Record> records;
     
     InputStream pic;
     int[] psw;
@@ -36,19 +39,31 @@ public class DataColletor implements dataAPI {
         // information we have, then empty the Picture & Password set.
         
         Record newRecord = new Record(this.psw, this.pic, this.time);
+        this.records.add(newRecord);
+        
+        this.psw = null;
+        this.pic = null;
+        this.time = null;
 
     }
 
     @Override
-    public boolean newPicture(InputStream pic) {
-        // TODO Auto-generated method stub
-        return false;
+    public boolean newPicture(InputStream pic, Date date) {
+        if (pic != null) {
+            this.pic = pic;
+            this.time = date;
+            return true;
+        } else
+            return false;
     }
 
     @Override
     public boolean newPassword(int[] psw) {
-        // TODO Auto-generated method stub
-        return false;
+        if (psw != null) {
+            this.psw = psw;
+            return true;
+        } else
+            return false;
     }
 
 }

@@ -1,6 +1,7 @@
 package project.module2.API;
 
 import java.io.InputStream;
+import java.util.Date;
 
 public interface dataAPI {
 
@@ -8,7 +9,7 @@ public interface dataAPI {
     
     void store();
     
-    boolean newPicture(InputStream pic);
+    boolean newPicture(InputStream pic, Date date);
     
     boolean newPassword(int[] psw);
     
