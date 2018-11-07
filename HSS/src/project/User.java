@@ -1,15 +1,16 @@
 package project;
 
 public class User {
-	private String name;
-	private String phoneNumber;
-	private String email;
-	private boolean notifyByText;
-	private boolean notifyByEmail;
+	String name;
+	String phoneNumber;
+	String email;
+	boolean notifyByText;
+	boolean notifyByEmail;
 	
 	public User() {}
 	
 	public User(String name) {
+		super();
 		this.name = name;
 	}
 	
@@ -32,6 +33,7 @@ public class User {
 	public User(String user, String phone, String email) {
 		this.name = user;
 		this.phoneNumber = phone;
+		this.email=email;
 	}
 
 	public String getName() {

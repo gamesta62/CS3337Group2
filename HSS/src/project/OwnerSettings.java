@@ -1,6 +1,8 @@
 package project;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +29,7 @@ public class OwnerSettings extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//ArrayList<User> owner = (ArrayList<User>) getServletContext().getAttribute("owner");
 		request.getRequestDispatcher("/WEB-INF/OwnerSettings.jsp").forward(request, response);
 	}
 
