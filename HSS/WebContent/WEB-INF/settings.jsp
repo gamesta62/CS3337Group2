@@ -20,7 +20,7 @@
 		<tr>
 			<th class=text-right></th>
 			<th class=text-center><a href="OwnerSettings">Owner's Preferences</a></th>
-			<th>Emergency Contacts</th>
+			<th><a href="EmergencyContacts">Emergency Contacts</a></th>
 			<th></th>
 		</tr>
 	</table>

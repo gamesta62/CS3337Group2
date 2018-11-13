@@ -10,26 +10,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class OwnerSettings
+ * Servlet implementation class DeleteContact
  */
-@WebServlet("/OwnerSettings")
-public class OwnerSettings extends HttpServlet {
+@WebServlet("/DeleteContact")
+public class DeleteContact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OwnerSettings() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/OwnerSettings.jsp").forward(request, response);
+		ArrayList<User> entries = (ArrayList<User>) getServletContext().getAttribute("entries");
+		int id = Integer.parseInt(request.getParameter("id"));
+		for (User entry:entries) {
+			if (entry.getId() == id) {
+				entries.remove(entry);
+				break;
+			}
+		}
+		
+		response.sendRedirect("EmergencyContacts");
 	}
 
 	/**

@@ -6,6 +6,7 @@ public class User {
 	String email;
 	boolean notifyByText;
 	boolean notifyByEmail;
+	int id;
 	
 	public User() {}
 	
@@ -30,10 +31,20 @@ public class User {
 		this.notifyByEmail = notifyByEmail;
 	}
 
-	public User(String user, String phone, String email) {
+	public User(int id, String user, String phone, String email) {
 		this.name = user;
 		this.phoneNumber = phone;
 		this.email=email;
+		this.id=id;
+	}
+	
+	public User(int id, String user, String phone, String email, boolean receiveText, boolean receiveEmail) {
+		this.name = user;
+		this.phoneNumber = phone;
+		this.email=email;
+		this.notifyByEmail=receiveEmail;
+		this.notifyByText=receiveText;
+		this.id=id;
 	}
 
 	public String getName() {
@@ -58,6 +69,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

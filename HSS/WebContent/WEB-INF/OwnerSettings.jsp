@@ -23,12 +23,12 @@
 		<tr>
 			<th class=text-right></th>
 			<th class=text-center>Owner's Preferences</th>
-			<th>Emergency Contacts</th>
+			<th><a href="EmergencyContacts">Emergency Contacts</a></th>
 			<th></th>
 		</tr>
 	</table>
 	
-	<div class="card" style="width: 50rem; margin: 0 auto;">
+	<div class="card" style="width: 70rem; margin: 0 auto;">
 	<table class="table table-sm">
 		<tr>
 			<th>Name</th>
@@ -44,13 +44,28 @@
 		</tr>
 		<tr>
 			<th>Receive Alerts & Notifications by Email</th>
-			<td>${owner.notifyByEmail }</td>
+			<c:choose>
+				<c:when test="${owner.notifyByEmail == true }">
+					<td>Yes</td>
+				</c:when>
+				<c:otherwise>
+					<td>No</td>
+				</c:otherwise>
+			</c:choose>
 		</tr>
 		<tr>
 			<th>Receive Alerts & Notifications by Text</th>
-			<td>${owner.notifyByText }</td>
+			<c:choose>
+				<c:when test="${owner.notifyByText == true }">
+					<td>Yes</td>
+				</c:when>
+				<c:otherwise>
+					<td>No</td>
+				</c:otherwise>
+			</c:choose>
 		</tr>
 	</table>
+	<a class="btn btn-primary" href="#" role="button">Edit Preferences</a>
 	</div>
 </body>
 </html>
