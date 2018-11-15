@@ -7,42 +7,43 @@ import project.module2.API.cameraAPI;
 
 public class Camera implements cameraAPI {
     
+    DataCenter dataCenter;
+    Date calledDate;
+    InputStream pic;
     
+    public Camera(DataCenter dataCenter) {
+        this.dataCenter = dataCenter;
+        this.calledDate = null;
+        this.pic = null;
+    }
 
-    @Override
     public void access(InputStream data) {
-        // TODO Auto-generated method stub
-
+        this.pic = data;
     }
 
     @Override
     public void takePicture() {
-        // TODO Auto-generated method stub
-
+        // not yet
     }
 
     @Override
-    public boolean sendData() {
-        // TODO Auto-generated method stub
-        return false;
+    public void call(Date time) {
+        this.calledDate = time;
+        this.takePicture();
+        this.tryRecordData(this.dataCenter);
     }
 
     @Override
-    public InputStream getData() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public boolean tryRecordData(DataCenter dataCenter) {
 
-    @Override
-    public void called(Date time) {
-        // TODO Auto-generated method stub
+        if (this.pic != null) {
+            dataCenter.newPicture(this.pic, this.calledDate);
+            this.pic = null;
+            this.calledDate = null;
+            return true;
+        }
         
-    }
-
-    @Override
-    public Date getCalledDate() {
-        // TODO Auto-generated method stub
-        return null;
+        return false;
     }
 
 }

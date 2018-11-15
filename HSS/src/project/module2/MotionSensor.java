@@ -19,7 +19,7 @@ public class MotionSensor implements motionSensorAPI {
 
     @Override
     public void callCamera() {
-        this.camera.called(new Date());
+        this.camera.call(new Date());
     }
 
     @Override

@@ -1,20 +1,15 @@
 package project.module2.API;
 
-import java.io.InputStream;
 import java.util.Date;
+
+import project.module2.DataCenter;
 
 public interface cameraAPI {
     
-    void called(Date time);
-    
-    Date getCalledDate();
-
-    void access(InputStream data);
+    void call(Date time);
     
     void takePicture();
     
-    boolean sendData();
-    
-    InputStream getData();
+    boolean tryRecordData(DataCenter dataCenter);
     
 }
