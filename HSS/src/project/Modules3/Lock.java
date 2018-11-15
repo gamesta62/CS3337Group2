@@ -76,36 +76,36 @@ public class Lock extends HttpServlet {
     	HSSEntry entry = getEntry(1);
         
     	ServletContext context = this.getServletContext();
-		int currentCount = (int)context.getAttribute("WrongPassword");
+		int wrongPassword = (int)context.getAttribute("WrongPassword");
 
 		int Count = (int)context.getAttribute("Locker");	
-
-		System.out.println(password);
-      	System.out.println(entry.getPassword());
+	
+		
 		
    
-        	if(entry.getPassword() == password) {
-        		currentCount = 0;
-        		context.setAttribute("WrongPassword", currentCount);	
+        	if(entry.password.equals(password)) {
+        		wrongPassword = 0;
+        		context.setAttribute("WrongPassword", wrongPassword);
         		response.sendRedirect("SmartLocker");
         	     
         	}else {
-        		currentCount++;
+        		wrongPassword++;
         		Count--;
         		context.setAttribute("Locker", Count);
-        		context.setAttribute("WrongPassword", currentCount);
+        		context.setAttribute("WrongPassword", wrongPassword);
         		
-        		 request.getRequestDispatcher( "/project.Modules3/Lock.jsp" ).forward(
+        		request.getRequestDispatcher( "/project.Modules3/Lock.jsp" ).forward(
     		             request, response );
+        		
+        		
+        		
+    		
         	}
         	
         	
         
-        	if(currentCount >= 3) {
-        		request.getRequestDispatcher( "/project.Modules3/ErrorPage.jsp" ).forward(
-   		             request, response );
-        	}
-		
+        
 	}
 
 }
+
