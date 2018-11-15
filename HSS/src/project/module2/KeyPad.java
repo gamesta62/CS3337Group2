@@ -42,7 +42,8 @@ public class KeyPad implements keyPadAPI {
             int[] newPswTry = new int[this.attemptTimes() + 1];
             for (int i = 0; i < this.attemptTimes(); i++)
                 newPswTry[i] = this.pswTry[i];
-            newPswTry[this.attemptTimes() + 1] = psw;
+            newPswTry[this.attemptTimes()] = psw;
+            this.pswTry = newPswTry;
         } else {
             // ***************************************************
             // *  For further action such as locking the keyPad  *

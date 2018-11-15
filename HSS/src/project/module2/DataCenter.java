@@ -1,6 +1,5 @@
 package project.module2;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,7 +9,7 @@ public class DataCenter implements dataAPI {
     
     ArrayList<Record> records;
     
-    InputStream pic;
+    byte[] pic;
     int[] psw;
     Date time;
     
@@ -18,6 +17,7 @@ public class DataCenter implements dataAPI {
         this.pic = null;
         this.psw = null;
         this.time = null;
+        records = new ArrayList<Record>();
     }
     
     @Override
@@ -72,7 +72,7 @@ public class DataCenter implements dataAPI {
     }
 
     @Override
-    public boolean newPicture(InputStream pic, Date date) {
+    public boolean newPicture(byte[] pic, Date date) {
         if (pic != null) {
             this.pic = pic;
             this.time = date;

@@ -10,7 +10,7 @@ public interface dataAPI {
 
     void store();
     
-    boolean newPicture(InputStream pic, Date date);
+    boolean newPicture(byte[] pic, Date date);
     
     boolean newPassword(int[] psw);
 

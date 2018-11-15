@@ -1,16 +1,15 @@
 package project.module2;
 
-import java.io.InputStream;
 import java.util.Date;
 
 public class Record {
     static int num = 0;
     int id;
-    InputStream picture;
+    byte[] picture;
     int[] password;
     Date recordTime;
     
-    public Record(int[] password, InputStream pic, Date time) {
+    public Record(int[] password, byte[] pic, Date time) {
         this.id = num++;
         this.picture = pic;
         this.recordTime = time;
@@ -20,7 +19,7 @@ public class Record {
         return this.id;
     }
     
-    InputStream getPicture() {
+    byte[] getPicture() {
         return this.picture;
     }
     
