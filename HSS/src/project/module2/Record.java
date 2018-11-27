@@ -12,6 +12,7 @@ public class Record {
     public Record(int[] password, byte[] pic, Date time) {
         this.id = num++;
         this.picture = pic;
+        this.password = password;
         this.recordTime = time;
     }
     

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/Module2")
+@WebServlet("/Module2/Index")
 public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,31 +28,13 @@ public class Servlet extends HttpServlet {
 	    
 	    Controller controller  = (Controller)getServletContext().getAttribute("controller");
 	    
-	    response.setContentType("text/html");
-        
-        PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<html lang=\"en\">");
-        
-        out.println("<head>");
-        out.println("    <meta charset=\"UTF-8\">");
-        out.println("    <title>Test test</title>");
-        out.println("    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<div class=\"container\">");
-        // **************************************
         
         controller.motionTest();
         controller.keyPadTest(123456);
         
-        out.println(controller.getNumberOfRecords());
         
+        request.getRequestDispatcher("/project/Modules2/Index.jsp").forward(request, response);
         
-        // **************************************
-        out.println("</div>");
-        out.println("</body>");        
-        out.println("</html>");
 	
 	}
 

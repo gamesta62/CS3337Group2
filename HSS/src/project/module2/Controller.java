@@ -31,6 +31,14 @@ public class Controller implements controllerAPI{
         keyPad.enterPassword(psw);
     }
     
+    public byte[] getPicture(int id) {
+        
+        if (id < this.getNumberOfRecords()) 
+            return this.getAllRecords().get(id).getPicture();
+        else
+            return null;
+    }
+    
     @Override
     public void activeDevices() {
         // setup all devices

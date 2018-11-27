@@ -4,6 +4,7 @@ import java.util.Date;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
+import java.io.ByteArrayOutputStream;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
@@ -21,7 +22,7 @@ public class Camera implements cameraAPI {
         this.pic = null;
     }
 
-    public byte[] randomPicture() {
+    private byte[] randomPicture() {
         
         // where the photo from
         String imageUrl = "https://picsum.photos/200/300/?random";
@@ -33,11 +34,18 @@ public class Camera implements cameraAPI {
             url = new URL(imageUrl);
             BufferedImage bufferedImage = ImageIO.read(url);
 
+            /*
             // get DataBufferBytes from Raster
             WritableRaster raster = bufferedImage.getRaster();
             DataBufferByte data   = (DataBufferByte) raster.getDataBuffer();
 
             image = data.getData();
+            */
+            
+            ByteArrayOutputStream baos=new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage, "png", baos);
+            baos.flush();
+            image = baos.toByteArray();
             
         } catch (Exception e) { }
         
