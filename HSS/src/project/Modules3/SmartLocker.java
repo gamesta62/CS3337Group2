@@ -19,21 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 public class SmartLocker extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
- 
-	 public void init( ServletConfig config ) throws ServletException
-	    {
-	        super.init( config );
 
-	        // create some test data for display
-	        List<HSSEntry> entries = new ArrayList<HSSEntry>();
-
-	        entries.add( new HSSEntry( 1, "1234" ) );
-	        entries.add( new HSSEntry( 2, "5678" ) );
-
-	        // and other servlets.
-	        getServletContext().setAttribute( "HSS", entries );
-	    }
-	 
+	
 	 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
