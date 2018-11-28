@@ -21,8 +21,9 @@
  					 <a href="Lock" class="badge badge-warning">       <h2>     Unlock      </h2></a><br/>
       </c:if>
 
- 
-<a href="LockSetting" class="badge badge-warning"><h2>  Lock Setting </h2></a>
+
+<a href="LockSetting" class="badge badge-warning"><h2>  Lock Setting </h2></a> <br/>
+<a href="MainPage"><p>  Back to main page </p></a>
 
 </body>
 </html>
