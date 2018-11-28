@@ -25,13 +25,19 @@ public class Index extends HttpServlet {
 		owner.setNotifyByEmail(true);
 		owner.setNotifyByText(true);
 		
+		emergencyNotification beta = new emergencyNotification();
+		beta.setTime(5);
+		
 		ArrayList<User> entries = new ArrayList<User>();
-		entries.add(new User(1,"Jane Doe", "1-213-156-8946","jdoe@email.com"));
+		entries.add(new User(1,"Jane Doe", "1-213-156-8946","jdoe@email.com", true,true));
 		entries.add(new User(2,"John Doe", "", "johndoe@email.com",false,true));
 		entries.add(new User(3,"Jennifer Smith", "1-626-761-5468", "",true,false));
+		entries.add(new User(4,"Joebama","1234567","email.com",true,true));
+		entries.add(new User(5,"Mark","56789","realEmail.com",true,true));
 		
 		getServletContext().setAttribute("owner", owner);
 		getServletContext().setAttribute("entries", entries);
+		getServletContext().setAttribute("delay", beta);
 	}
 
 	/**

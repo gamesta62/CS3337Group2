@@ -64,8 +64,12 @@
 				</c:otherwise>
 			</c:choose>
 		</tr>
+		<tr>
+			<th>Delay Time Before Notifying Authorities in Seconds</th>
+			<td> ${delay.time}</td>
+		</tr>
 	</table>
-	<a class="btn btn-primary" href="#" role="button">Edit Preferences</a>
+	<a class="btn btn-primary" href="EditOwner" role="button">Edit Preferences</a>
 	</div>
 </body>
 </html>
