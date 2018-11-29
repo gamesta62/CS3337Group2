@@ -1,0 +1,33 @@
+//repositories {
+//    jcenter()
+//    mavenCentral()
+//}
+//
+//dependencies {
+//    classpath 'com.bmuschko:gradle-tomcat-plugin:2.5'
+//
+//    def tomcatVersion = '8.5.16'
+//    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+//           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+//}
+//
+//apply plugin: 'com.bmuschko.tomcat'
+//
+//tomcat {
+//    httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+//    ajpProtocol = 'org.apache.coyote.http11.AjpNio2Protocol'
+//}
+plugins {
+    id 'war'
+    id 'org.gretty' version '2.2.0'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'com.twilio.sdk', name: 'twilio', version: '7.31.0'
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    testCompile 'junit:junit:4.12'
+}
