@@ -12,8 +12,9 @@
 	<table class="table">
 		<tr> <td> <a class="btn btn-primary btn-large" href="#" role="button" onclick='javascript:window.open("NotifyContacts?alertType=1", "_blank", "scrollbars=1,resizable=1,height=600,width=400");' title='Notifications Sent'>Send Notifications about forced entry to Emergency Contacts </a> </td> </tr>
 		<tr> <td> <a class="btn btn-prmiary btn-large" href="#" role="button" onclick='javascript:window.open("NotifyContacts?alertType=2", "_blank", "scrollbars=1,resizable=1,height=600,width=400");' title='Notifications Sent'>Send Notifications about failed keypad attempts to Emergency Contacts</a> </td> </tr>
-		<tr> <td> <a class="btn btn-primary" href="#" role="button">Ask Emergency Contact to Unlock Door</a> </td> </tr>
-		<tr> <td> <a class="btn btn-primary" href="#" role="button">Ask Emergency Contact to Disable Silent Alarm</a> </td> </tr>
+		<tr> <td> <a class="btn btn-primary" href="#" role="button" onclick='javascript:window.open("/HSS/project.Modules3/GuestPage", "_blank", "scrollbars=1,resizable=1,height=600,width=400");' title='Notifications Sent'>Ask Emergency Contact to Unlock Door</a> </td> </tr>
+		<tr> <td> <a class="btn btn-primary" href="#" role="button" role="button" onclick='javascript:window.open("DisableAlarm", "_blank", "scrollbars=1,resizable=1,height=600,width=400");' title='Notifications Sent'>Show off Silent Alarm delay</a> </td> </tr>
+		
 	</table>
 </body>
 </html>

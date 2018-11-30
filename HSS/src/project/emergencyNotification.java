@@ -67,8 +67,21 @@ public class emergencyNotification {
 		}
 	}
 	
-	public String notify911() throws InterruptedException{
-		TimeUnit.SECONDS.sleep(time);
+	public String notifyTopic(int alertType) {
+		if (alertType == 1) {
+			return "Forced Entry.";
+		} else if (alertType == 2) {
+			return "Excessive Failed Keypad Attempts.";
+		} else if (alertType == 3) {
+			return "Motion Sensors Tripped.";
+		}
+		else {
+			return "ERROR. INVALID INPUT";
+		}
+	}
+	
+	public String notify911() throws InterruptedException {
+		//TimeUnit.SECONDS.sleep(time);
 		return "Calling 911 services...";
 	}
 

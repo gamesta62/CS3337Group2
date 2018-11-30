@@ -26,7 +26,7 @@ public class Index extends HttpServlet {
 		owner.setNotifyByText(true);
 		
 		emergencyNotification beta = new emergencyNotification();
-		beta.setTime(5);
+		beta.setTime(10);
 		
 		ArrayList<User> entries = new ArrayList<User>();
 		entries.add(new User(1,"Jane Doe", "1-213-156-8946","jdoe@email.com", true,true));
