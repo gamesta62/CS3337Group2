@@ -11,14 +11,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p class=text-right> Welcome back, User! </p>
+<p class=text-right> <a href="Admin">To Admin Page </a> </p>
 	<h1 class=text-center>Home Security System</h1>
 	<table class=table>
 		<tr>
-			<th class=text-right><a href="Index">Main</a></th>
-			<th class=text-center><a href="HardwareStatus">Hardware Status</a></th>
-			<th class=text-left><a href="LoggedEvents">Logged Events</a></th>
-			<th class=text-left>Settings</th>
+			<th class=text-right>Main</th>
+			<th class=text-center>Hardware Status</th>
+			<th class=text-left>Logged Events</th>
+			<th class=text-left><a href="Settings">Settings</a></th>
 		</tr>
 		<tr>
 			<th class=text-right></th>

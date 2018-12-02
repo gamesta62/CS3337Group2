@@ -43,7 +43,6 @@ public class NotifyContacts extends HttpServlet {
 			if (entry.isNotifyByEmail() == true) {
 				notify.notifyByEmail(entry.getEmail(), alertType);
 				notified.add(entry);
-
 				//used example online to send emails to contacts
 				Properties props = System.getProperties();
 				props.put("mail.smtp.auth", "true");
@@ -58,23 +57,18 @@ public class NotifyContacts extends HttpServlet {
 							}
 						  });
 
-				if (entry.getEmail().equals("jonathanung62@yahoo.com")) {
+				if (!entry.getEmail().contains("email.com")) {
 					try {
 						// Create a default MimeMessage object.
 						MimeMessage message = new MimeMessage(session);
-
 						// Set From: header field of the header.
 						message.setFrom(new InternetAddress("demolucus@gmail.com"));
-
 						// Set To: header field of the header.
-						message.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress("jonathanung62@yahoo.com"));
-
+						message.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(entry.getEmail()));
 						// Set Subject: header field
 						message.setSubject("HSS - " + notify.notifyTopic(alertType));
-
 						// Now set the actual message
 						message.setText(notify.notifyGeneral(alertType));
-
 						// Send message
 						Transport.send(message);
 						System.out.println("Sent message successfully....");
