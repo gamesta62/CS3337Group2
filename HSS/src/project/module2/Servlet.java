@@ -28,12 +28,48 @@ public class Servlet extends HttpServlet {
 	    
 	    Controller controller  = (Controller)getServletContext().getAttribute("controller");
 	    
+	    int code;
+	    if (request.getParameter("code")!= null) {
+	        code = Integer.parseInt(request.getParameter("code"));
+	        switch(code) {
+	            case 101:
+	                controller.activeDevices();
+	                break;
+	            case 102:
+                    controller.motionTest();
+                    break;
+	            case 103:
+	                request.getRequestDispatcher("/project.Modules2/keypad.jsp").forward(request, response);
+	                //controller.keyPadTest(123456);
+                    break;
+	            case 104:
+	                int loc = -3;
+	                if(request.getParameter("location")!=null)
+	                    loc = Integer.parseInt(request.getParameter("location"));
+	                if (loc != -3 && loc != -1 && loc != 99)
+	                    controller.setPassword(loc);
+	                else if (loc == -1)
+	                    controller.setPassword(-1);
+	                else if (loc == 99) {
+	                    controller.keyPadTest(controller.getPassword());
+	                    controller.setPassword(-3);
+	                    response.sendRedirect("Index");
+	                    return;
+	                }
+	                request.getRequestDispatcher("/project.Modules2/keypad.jsp").forward(request, response);
+	                break;
+	            default:
+	                break;
+	        }
+	        response.sendRedirect("Index");
+            return;
+	    }
+	        
+	    //controller.activeDevices();
+        //controller.motionTest();
+        //controller.keyPadTest(123456);
         
-        controller.motionTest();
-        controller.keyPadTest(123456);
-        
-        
-        request.getRequestDispatcher("/project/Modules2/Index.jsp").forward(request, response);
+        request.getRequestDispatcher("/project.Modules2/main.jsp").forward(request, response);
         
 	
 	}

@@ -7,6 +7,9 @@ public class KeyPad implements keyPadAPI {
     DataCenter dataCenter;
     int psw;
     int[] pswTry;
+    int numOfPasw;
+    boolean isValid;
+    boolean lock;
     
     public KeyPad(DataCenter dataCenter){
         // initial password will be "123456"
@@ -17,20 +20,32 @@ public class KeyPad implements keyPadAPI {
         this.dataCenter = dataCenter;
         this.psw = psw;
         this.pswTry = new int[] {};
+        this.numOfPasw = 0;
+    }
+    
+    public void reset() {
+        this.numOfPasw = 0;
+        this.lock = false;
+        this.isValid = false;
     }
     
     @Override
     public boolean isValid() {
-        for (int psw : this.pswTry) {
-            if (psw == this.psw)
+        if (this.isValid == true)
+            return true;
+        
+        for (int i = 0; i < pswTry.length; i++) {
+            if (pswTry[i] == psw) {
+                this.isValid = true;
                 return true;
+            }
         }
         return false;
     }
 
     @Override
     public int attemptTimes() {
-        return pswTry.length;
+        return numOfPasw;
     }
 
     @Override
@@ -48,7 +63,9 @@ public class KeyPad implements keyPadAPI {
             // ***************************************************
             // *  For further action such as locking the keyPad  *
             // ***************************************************
+            this.lock = true;
         }
+        numOfPasw++;
         
         this.tryRecordData(this.dataCenter);
         
@@ -56,12 +73,15 @@ public class KeyPad implements keyPadAPI {
 
     @Override
     public boolean tryRecordData(DataCenter dataCenter) {
-        if(this.isValid() || (this.attemptTimes() == 3)) {
+        if(this.isValid()) {
             // If the password is valid or more than 3 times in trying
             // we will record them, and empty the password-try array.
             dataCenter.newPassword(this.pswTry);
             this.pswTry = new int[] {};
+            this.isValid = true;
             return true;
+        } else if ((this.attemptTimes() == 3)) {
+            this.lock = true;
         }
         return false;
     }
