@@ -34,7 +34,6 @@ public class NotifyContacts extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		int alertType = Integer.parseInt(request.getParameter("alertType"));
 		emergencyNotification notify = new emergencyNotification();
 		ArrayList<User> entries = (ArrayList<User>) getServletContext().getAttribute("entries");
@@ -83,8 +82,8 @@ public class NotifyContacts extends HttpServlet {
 					notified.add(entry);
 				Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
-				if (entry.getPhoneNumber().equals("13233606193")) {
-					Message message = Message.creator(new PhoneNumber("13233606193"), // To number
+				if (!entry.getPhoneNumber().contains("-")) {
+					Message message = Message.creator(new PhoneNumber(entry.getPhoneNumber()), // To number
 							new PhoneNumber("+13235535355"),                  // From number
 							notify.notifyGeneral(alertType)).create();                  // Message Body
 				}
