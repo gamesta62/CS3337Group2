@@ -14,14 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Index
  */
-@WebServlet("/Index")
+@WebServlet("")
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		
-		User owner = new User(0,"Joe Smith","1-323-746-1284","jsmith@email.com");
+		User owner = new User(0,"Kamron","19492904003","kzadeh1@gmail.com");
 		owner.setNotifyByEmail(true);
 		owner.setNotifyByText(true);
 		
@@ -32,8 +32,8 @@ public class Index extends HttpServlet {
 		entries.add(new User(1,"Jane Doe", "1-213-156-8946","jdoe@email.com", true,true));
 		entries.add(new User(2,"John Doe", "", "johndoe@email.com",false,true));
 		entries.add(new User(3,"Jennifer Smith", "1-626-761-5468", "",true,false));
-		entries.add(new User(4,"Joebama","1234567","email.com",true,true));
-		entries.add(new User(5,"Mark","56789","real@email.com",true,true));
+		entries.add(new User(4,"Joebama","12-34567","email.com",true,true));
+		entries.add(new User(5,"Mark","567-89","real@email.com",true,true));
 		
 		getServletContext().setAttribute("owner", owner);
 		getServletContext().setAttribute("entries", entries);

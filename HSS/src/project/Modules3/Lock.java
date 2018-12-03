@@ -1,5 +1,8 @@
 package project.Modules3;
 
+import project.User;
+import project.Notifier;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -97,9 +100,9 @@ public class Lock extends HttpServlet {
         		request.getRequestDispatcher( "/project.Modules3/Lock.jsp" ).forward(
     		             request, response );
         		
-        		
-        		
-    		
+		    Notifier notifier = new Notifier();
+		    notifier.notify((User)getServletContext().getAttribute("owner"),
+			"Failed door unlock attempt detected");
         	}
         	
         	
