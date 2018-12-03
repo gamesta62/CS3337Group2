@@ -15,15 +15,15 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/hss/">HSS</a>
+				<a class="navbar-brand" href="/HSS/">HSS</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/hss/">Home</a></li>
-				<li><a href="/hss/Module2/Index">Module 2</a></li>
-				<li><a href="/hss/project.Modules3/MainPage">Module 3</a></li>
+				<li class="active"><a href="/HSS/">Home</a></li>
+				<li><a href="/HSS/Module2/Index">Module 2</a></li>
+				<li><a href="/HSS/project.Modules3/MainPage">Module 3</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/hss/Settings"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
+				<li><a href="/HSS/Settings"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
 			</ul>
 		</div>
 	</nav>
