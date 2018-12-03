@@ -1,7 +1,6 @@
 package project.module2;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -65,13 +64,8 @@ public class Servlet extends HttpServlet {
             return;
 	    }
 	        
-	    //controller.activeDevices();
-        //controller.motionTest();
-        //controller.keyPadTest(123456);
-        
         request.getRequestDispatcher("/project.Modules2/main.jsp").forward(request, response);
         
-	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

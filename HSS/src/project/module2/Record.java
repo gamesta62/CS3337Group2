@@ -10,26 +10,25 @@ public class Record {
     Date recordTime;
     
     public Record(int[] password, byte[] pic, Date time) {
-        this.id = ++num;
+        this.id = num++;
         this.picture = pic;
         this.password = password;
         this.recordTime = time;
     }
     
-    int getId() {
+    public int getId() {
         return this.id;
     }
     
-    byte[] getPicture() {
+    public byte[] getPicture() {
         return this.picture;
     }
     
-    int[] getPassword() {
+    public int[] getPassword() {
         return this.password;
     }
 
-    Date getRecordDate() {
+    public Date getRecordDate() {
         return this.recordTime;
     }
-    
 }

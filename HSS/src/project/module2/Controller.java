@@ -24,7 +24,7 @@ public class Controller implements controllerAPI{
         this.paswd = -2;
     }
     
-    public ArrayList<Record> getAllRecords() {
+    public ArrayList<Record> getRecords() {
         return dataCenter.getRecords();
     }
     
@@ -44,6 +44,7 @@ public class Controller implements controllerAPI{
         // motion sensor will detect a movement.
         motionSensor.isDetected(true);
         motionTested = true;
+        this.paswded = false;
         this.keyPad.reset();
     }
     
@@ -55,10 +56,11 @@ public class Controller implements controllerAPI{
         // motion sensor will detect a movement.
         keyPad.enterPassword(psw);
         this.paswded = true;
+        this.motionTested = false;
     }
     
     public boolean getPaswValid() {
-        return this.keyPad.isValid();
+    	return this.keyPad.isValid();
     }
     
     public int getEnterTimes() {
@@ -79,7 +81,7 @@ public class Controller implements controllerAPI{
     public byte[] getPicture(int id) {
         
         if (id < this.getNumberOfRecords()) 
-            return this.getAllRecords().get(id).getPicture();
+            return this.getRecords().get(id).getPicture();
         else
             return null;
     }
@@ -156,7 +158,9 @@ public class Controller implements controllerAPI{
 
     @Override
     public int getNumberOfRecords() {
-        return dataCenter.getRecords().size();
+    	if (this.dataCenter == null)
+    		return 0;
+        return this.dataCenter.getRecords().size();
     }
     
     @Override

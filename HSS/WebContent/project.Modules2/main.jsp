@@ -22,9 +22,6 @@
 	  <li class="nav-item">
 	    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Records</a>
 	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-	  </li>
 	</ul>
 	
 	<div class="tab-content" id="myTabContent">
@@ -92,41 +89,38 @@
 	  </div>
 	  
 	  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-	    <h4 class="text-white bg-dark">Records</h4>
+	    <br><h4 class="text-white bg-dark">Records</h4>
+	    <br><p class="alert alert-info">Total number of records: ${controller.numberOfRecords}</p>
 	    <table class="table table-dark">
 		  <thead>
 		    <tr>
 		      <th scope="col">#</th>
-		      <th scope="col">First</th>
-		      <th scope="col">Last</th>
-		      <th scope="col">Handle</th>
+		      <th scope="col">Date</th>
+		      <th scope="col">Picture</th>
+		      <th scope="col">Password(s)</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr>
-		      <th scope="row">1</th>
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td>@mdo</td>
-		    </tr>
-		    <tr>
-		      <th scope="row">2</th>
-		      <td>Jacob</td>
-		      <td>Thornton</td>
-		      <td>@fat</td>
-		    </tr>
-		    <tr>
-		      <th scope="row">3</th>
-		      <td>Larry</td>
-		      <td>the Bird</td>
-		      <td>@twitter</td>
-		    </tr>
+		  	
+		  	<c:if test="${controller.actived == true }">
+		  		<c:forEach items="${controller.records}" var="entry" varStatus="status">
+		  			<tr>
+		  				<th>${entry.id + 1}</th>
+		  				<th>${entry.recordDate}</th>
+		  				<th><img src="Image?id=${entry.id}" alt="..." class="img-thumbnail"></th>
+		  				<th>
+		  					<c:forEach items="${entry.password}" var="aa" varStatus="status">
+		  						<c:out value="${aa}" />
+		  						<br>
+		  					</c:forEach>
+		  				</th>
+		  			</tr>
+		  		
+		  		</c:forEach>
+	  		</c:if>
+		  	
 		  </tbody>
 		</table>
-	  </div>
-	  
-	  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-	  	33
 	  </div>
 	  
 	</div>
