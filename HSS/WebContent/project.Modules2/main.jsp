@@ -18,7 +18,7 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/hss/">HSS</a>
+				<a class="navbar-brand" href="/HSS/">HSS</a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="/HSS/">Home</a></li>
