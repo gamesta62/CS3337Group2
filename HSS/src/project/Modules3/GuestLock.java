@@ -88,7 +88,7 @@ public class GuestLock extends HttpServlet {
         	if(entry.password.equals(password)) {
         		wrongPassword = 0;
         		context.setAttribute("WrongPassword", wrongPassword);
-        		response.sendRedirect("MainPage");
+        		response.sendRedirect("GuestPage");
         	     
         	}else {
         		wrongPassword++;
