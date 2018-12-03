@@ -21,7 +21,7 @@ public class Index extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		
-		User owner = new User(0,"Joe Smith","1-323-746-1284","jsmith@email.com");
+		User owner = new User(0,"Kamron","19492904003","kzadeh1@gmail.com");
 		owner.setNotifyByEmail(true);
 		owner.setNotifyByText(true);
 		

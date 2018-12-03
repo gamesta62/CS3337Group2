@@ -20,6 +20,6 @@
       </c:if>
 
 
-<a href="LockSetting"><p>  Back to main page </p></a>
+<a href="/hss/project.Modules3/MainPage"><p>  Back to main page </p></a>
 </body>
 </html>
