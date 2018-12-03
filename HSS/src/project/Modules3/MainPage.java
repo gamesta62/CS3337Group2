@@ -25,7 +25,7 @@ public class MainPage extends HttpServlet {
 	        // create some test data for display
 	        List<HSSEntry> entries = new ArrayList<HSSEntry>();
 
-	        entries.add( new HSSEntry( 1, "1234" ) );
+	        entries.add( new HSSEntry( 1, "123456" ) );
 
 	        // and other servlets.
 	        getServletContext().setAttribute( "HSS", entries );
