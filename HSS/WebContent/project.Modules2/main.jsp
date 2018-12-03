@@ -34,16 +34,19 @@
 <c:if test="${not empty controller }">
 	<div class="container">
 	<h1>Module2 Demo Page</h1>
-	<ul class="nav nav-tabs" id="myTab" role="tablist">
+	<ul class="nav nav-tabs" id="my-Tab" role="tablist">
 	  <li class="nav-item">
-	    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Hardware</a>
+	    <a class="nav-item nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Hardware</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Records</a>
+	    <a class="nav-item nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Records</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-item nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Search</a>
 	  </li>
 	</ul>
 	
-	<div class="tab-content" id="myTabContent">
+	<div class="tab-content" id="my-TabContent">
 	
 	  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 		<div class="container">
@@ -110,6 +113,7 @@
 	  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 	    <br><h4 class="text-white bg-dark">Records</h4>
 	    <br><p class="alert alert-info">Total number of records: ${controller.numberOfRecords}</p>
+	    <p class="alert alert-info">Total movements detected by Motion Sensor: ${controller.detectedTimes}</p>
 	    <table class="table table-dark">
 		  <thead>
 		    <tr>
@@ -140,6 +144,58 @@
 		  	
 		  </tbody>
 		</table>
+	  </div>
+	  
+	  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+		<form class="container" action="Index" method="get">
+		  <br>
+		  	From
+		  <div class="form-group mx-sm-3 mb-2">
+		    <input class="form-control" name="date1" placeholder="12/01">
+		  </div>
+		  	To
+		  <div class="form-group mx-sm-3 mb-2">
+		    <input class="form-control" name="date2" placeholder="12/05">
+		  </div>
+		  <input type="hidden" name="code" value="105">
+		  <button type="submit" class="btn btn-primary mb-2">Search</button>
+		</form>
+		<c:if test="${controller.actived == true }">
+			<c:if test="${controller.searched == true }">
+				
+			    <table class="table table-dark">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Date</th>
+				      <th scope="col">Picture</th>
+				      <th scope="col">Password(s)</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	
+				  	<c:if test="${controller.actived == true }">
+				  		<c:forEach items="${controller.searchRecords}" var="entry" varStatus="status">
+				  			<tr>
+				  				<th>${entry.id + 1}</th>
+				  				<th>${entry.recordDate}</th>
+				  				<th><img src="Image?id=${entry.id}" alt="..." class="img-thumbnail"></th>
+				  				<th>
+				  					<c:forEach items="${entry.password}" var="aa" varStatus="status">
+				  						<c:out value="${aa}" />
+				  						<br>
+				  					</c:forEach>
+				  				</th>
+				  			</tr>
+				  		
+				  		</c:forEach>
+			  		</c:if>
+				  	
+				  </tbody>
+				</table>
+
+			</c:if>
+		</c:if>
 	  </div>
 	  
 	</div>

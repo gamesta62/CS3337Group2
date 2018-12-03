@@ -57,6 +57,28 @@ public class Servlet extends HttpServlet {
 	                }
 	                request.getRequestDispatcher("/project.Modules2/keypad.jsp").forward(request, response);
 	                break;
+	            case 105:
+	            	String f1 = "", f2 = "", t1 = "", t2 = "";
+	            	if(request.getParameter("date1")!=null) {
+	            		f1 = request.getParameter("date1").substring(0, 2);
+	            		if (f1.substring(0,1).equals("0"))
+	            			f1 = f1.substring(1,2);
+	            		f2 = request.getParameter("date1").substring(3, 5);
+	            		if (f2.substring(0,1).equals("0"))
+	            			f2 = f2.substring(1,2);
+	            	}
+	            	if(request.getParameter("date2")!=null) {
+	            		t1 = request.getParameter("date2").substring(0, 2);
+	            		if (t1.substring(0,1).equals("0"))
+	            			t1 = t1.substring(1,2);
+	            		t2 = request.getParameter("date2").substring(3, 5);
+	            		if (t2.substring(0,1).equals("0"))
+	            			t2 = t2.substring(1,2);
+	            	}
+	            	if (f1!="" && f2!="" && t1!="" && t2!="")
+	            	controller.searchRecords(Integer.parseInt(f1), Integer.parseInt(f2),
+	            			Integer.parseInt(t1), Integer.parseInt(t2));
+	            	break;
 	            default:
 	                break;
 	        }
