@@ -11,19 +11,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p class=text-right> <a href="Admin">To Admin Page </a> </p>
+<p class=text-right> <a href="/HSS/Admin">To Admin Page </a></p>
 	<h1 class=text-center>Home Security System</h1>
 	<table class=table>
 		<tr>
-			<th class=text-right>Main</th>
-			<th class=text-center>Hardware Status</th>
-			<th class=text-left>Logged Events</th>
-			<th class=text-left><a href="Settings">Settings</a></th>
+			<th class=text-right><a href="/HSS/">Main</th>
+			<th class=text-center><a href="/HSS/Module2/Index">Hardware Status</th>
+			<th class=text-left><a href="/HSS/project.Modules3/MainPage">Keypad Control</th>
+			<th class=text-left><a href="/HSS/Settings">Settings </a></th>
 		</tr>
 		<tr>
 			<th class=text-right></th>
-			<th class=text-center><a href="OwnerSettings">Owner's Preferences</a></th>
-			<th>Emergency Contacts</th>
+			<th class=text-center><a href="/HSS/OwnerSettings">Owner's Preferences</a></th>
+			<th><a href="/HSS/EmergencyContacts">Emergency Contacts</th>
 			<th></th>
 		</tr>
 	</table>
