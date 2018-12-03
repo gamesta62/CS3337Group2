@@ -67,8 +67,10 @@ public class KeyPad implements keyPadAPI {
             // ***************************************************
             this.lock = true;
             Notifier notifier = new Notifier();
-            notifier.notify((User)getServletContext().getAttribute("owner"),
-            "Failed door unlock attempt detected");
+            User owner = new User(0,"Kamron","19492904003","kzadeh1@gmail.com");
+    		owner.setNotifyByEmail(true);
+    		owner.setNotifyByText(true);
+            notifier.notify(owner, "Failed door unlock attempt detected from module 2");
         }
         numOfPasw++;
         
