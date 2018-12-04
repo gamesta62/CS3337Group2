@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>You have locked successfully</h1>
-<a href="SmartLocker" class="badge badge-warning">Back To Main Page</a><br/>
+<a href="/HSS/project.Modules3/MainPage" class="badge badge-warning">Back To Main Page</a><br/>
 </body>
 </html>
