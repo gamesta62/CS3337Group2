@@ -51,7 +51,7 @@ public class Notifier	{
 		Session session = Session.getInstance(props,
 			new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("demolucus@gmail.com", "hackrus123");
+					return new PasswordAuthentication("demolucus@gmail.com", "***");
 				}
 			});
 
