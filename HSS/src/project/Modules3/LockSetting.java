@@ -3,6 +3,8 @@ package project.Modules3;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,22 @@ public class LockSetting extends HttpServlet {
 		return null;
 	}
 	
+	
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config); //dont forget this line
+	
+		//get a reference to the servlet context (Application Scope)
+		ServletContext context = this.getServletContext();
+	
+		//Create a local primitive value for the counter
+		int count = 0;
+		//set the inital value of the vote counter to 0
+		context.setAttribute("counter", count);
+	
 
+}
+
+	
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  request.getRequestDispatcher( "/project.Modules3/LockSetting.jsp" ).forward(
@@ -36,23 +53,46 @@ public class LockSetting extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-			boolean hasError = false;
+		
         	String password = request.getParameter( "password" );
         	String oldPassword = request.getParameter( "oldPassword" );
-        	
+        	ServletContext context = this.getServletContext();
         	HSSEntry entry = getEntry(1);
     	    
-   
-        	
-    		if(entry.getPassword() != oldPassword) {
-    			hasError = true;
-    		}
+        
+    		int currentCount = (int)context.getAttribute("counter");	
+    		currentCount++;
+    		context.setAttribute("counter", currentCount);
     		
-		if(hasError) {
+    	boolean hasError = false;
+  
+		
+		
+		
+		
+		if(password.isEmpty()){
+			context.setAttribute("emptyPassword", "Please entered a valid password");
+			hasError = false;
+		}else {
+			context.setAttribute("emptyPassword", "");
+		}
+
+		if(!entry.password.equals(oldPassword)) {
+			context.setAttribute("errorMessage", "You entered wrong password");
+			hasError = false;		
+		}else {
+			context.setAttribute("errorMessage", "");
+		}
+		
+		
+		if(entry.password.equals(oldPassword) && !password.isEmpty()) {
 			entry.setPassword(password);
+			hasError = true;
+		}
+		
+		if(hasError) {
 			response.sendRedirect("SmartLocker");
 		}else {
-			
 			request.getRequestDispatcher( "/project.Modules3/LockSetting.jsp" ).forward(
 		             request, response );
 		}

@@ -33,7 +33,7 @@ public class Notifier	{
 
 	public void notify(User user, String notification) {
 		if (user.isNotifyByEmail() == true) {
-			//notifyByEmail(user, notification);
+			notifyByEmail(user, notification);
 		}
 
 		if (user.isNotifyByText() == true) {

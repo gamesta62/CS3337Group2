@@ -1,6 +1,8 @@
 package project.module2;
 
 import project.module2.API.keyPadAPI;
+import project.User;
+import project.Notifier;
 
 public class KeyPad implements keyPadAPI {
 
@@ -64,6 +66,11 @@ public class KeyPad implements keyPadAPI {
             // *  For further action such as locking the keyPad  *
             // ***************************************************
             this.lock = true;
+            Notifier notifier = new Notifier();
+            User owner = new User(0,"Kamron","19492904003","kzadeh1@gmail.com");
+    		owner.setNotifyByEmail(true);
+    		owner.setNotifyByText(true);
+            notifier.notify(owner, "Failed door unlock attempt detected from module 2");
         }
         numOfPasw++;
         
@@ -81,6 +88,9 @@ public class KeyPad implements keyPadAPI {
             this.isValid = true;
             return true;
         } else if ((this.attemptTimes() == 3)) {
+        	dataCenter.newPassword(this.pswTry);
+        	this.pswTry = new int[] {};
+            this.isValid = false;
             this.lock = true;
         }
         return false;

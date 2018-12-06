@@ -1,6 +1,7 @@
 package project.module2;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import project.module2.API.controllerAPI;
 
@@ -16,15 +17,47 @@ public class Controller implements controllerAPI{
     boolean motionTested;
     int paswd;
     boolean paswded;
+    ArrayList<Record> searchRecords;
+    boolean searched;
     
     public Controller() {
         //this.activeDevices();
         statusOfDevices = new boolean[3];
         actived = false;
+        searched =false;
         this.paswd = -2;
     }
     
-    public ArrayList<Record> getAllRecords() {
+	public void searchRecords(int fromMonth, int fromDate, int toMonth, int toDate) {
+		int f1 = fromMonth - 1;
+		int f2 = fromDate;
+		int t1 = toMonth - 1;
+		int t2 = toDate;
+		
+		ArrayList<Record> allRecords = this.getRecords();
+		ArrayList<Record> newRecords = new ArrayList<Record> ();
+		
+		for (Record a : allRecords) {
+			Date day = a.getRecordDate();
+			if ((day.getMonth() >= f1 && day.getDate() >= f2) && (day.getMonth() <= t1 && day.getDate() <= t2))
+				newRecords.add(a);
+		}
+		this.searchRecords = newRecords;
+        this.searched = true;
+    }
+	
+	public boolean getSearched() {
+		return this.searched;
+	}
+	
+	public ArrayList<Record> getSearchRecords() {
+		ArrayList<Record> records = this.searchRecords;
+		this.searchRecords = new ArrayList<Record>();
+		this.searched = false;
+        return records;
+    }
+	
+    public ArrayList<Record> getRecords() {
         return dataCenter.getRecords();
     }
     
@@ -44,6 +77,7 @@ public class Controller implements controllerAPI{
         // motion sensor will detect a movement.
         motionSensor.isDetected(true);
         motionTested = true;
+        this.paswded = false;
         this.keyPad.reset();
     }
     
@@ -55,10 +89,11 @@ public class Controller implements controllerAPI{
         // motion sensor will detect a movement.
         keyPad.enterPassword(psw);
         this.paswded = true;
+        this.motionTested = false;
     }
     
     public boolean getPaswValid() {
-        return this.keyPad.isValid();
+    	return this.keyPad.isValid();
     }
     
     public int getEnterTimes() {
@@ -79,7 +114,7 @@ public class Controller implements controllerAPI{
     public byte[] getPicture(int id) {
         
         if (id < this.getNumberOfRecords()) 
-            return this.getAllRecords().get(id).getPicture();
+            return this.getRecords().get(id).getPicture();
         else
             return null;
     }
@@ -151,12 +186,16 @@ public class Controller implements controllerAPI{
 
     @Override
     public int getDetectedTimes() {
+    	if (motionSensor == null)
+    		return 0;
         return motionSensor.getDetectedTimes();
     }
 
     @Override
     public int getNumberOfRecords() {
-        return dataCenter.getRecords().size();
+    	if (this.dataCenter == null)
+    		return 0;
+        return this.dataCenter.getRecords().size();
     }
     
     @Override
